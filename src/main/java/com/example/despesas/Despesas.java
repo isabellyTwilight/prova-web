@@ -22,7 +22,7 @@ public class Despesas {
 
     public void Despesa(String descricao, double valor,
                         LocalDate data, String formaPagamento,
-                        Despesas categoria,Double limite) {
+                        Despesas categoria, Double limite) {
 
         this.descricao = descricao;
         this.valor = valor;
@@ -51,9 +51,6 @@ public class Despesas {
         return categoria;
     }
 
-    public Double getLimite() {
-
-    }
 
     public int getId() {
         return 0;
@@ -62,4 +59,4 @@ public class Despesas {
     public String getNome() {
         return null;
     }
-
+}

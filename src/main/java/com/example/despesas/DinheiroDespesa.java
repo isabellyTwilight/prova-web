@@ -19,7 +19,7 @@ public class DinheiroDespesa extends Despesas {
         super();
     }
 
-    public DinheiroDespesa(Object o, String descricao, double valor, LocalDate parse, String formaPagamento, DadosAplicacao despesas) {
+    public DinheiroDespesa(Object o, String descricao, double valor, LocalDate parse, String formaPagamento) {
     }
 
     public int getId() {
@@ -31,10 +31,6 @@ public class DinheiroDespesa extends Despesas {
     }
     public String getDescricao() {
         return descricao;
-    }
-
-    public Double getLimite() {
-        return limite;
     }
 
 }

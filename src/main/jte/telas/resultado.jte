@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Categorias</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/enfeite.css">
 </head>
 
 <body>
@@ -52,13 +52,6 @@
                 <td>${c.getNome()}</td>
                 <td>${c.getDescricao()}</td>
 
-                <td>
-                    @if(c.getLimite() != null)
-                        R$ ${String.format("%.2f", c.getLimite())}
-                    @else
-                        —
-                    @endif
-                </td>
             </tr>
 
         @endfor

@@ -13,8 +13,13 @@ import java.util.List;
 @Controller
 public class CategoriaController {
 
-    private List<Despesas> categorias = new ArrayList<>();
+    private List<Categoria> categorias = new ArrayList<>();
     private List<Despesas> despesas = new ArrayList<>();
+
+    @GetMapping("/")
+    public String index(){
+        return "index";
+    }
 
     // Abrir formulário de categoria
     @GetMapping("/categorias/nova")
@@ -29,14 +34,8 @@ public class CategoriaController {
             @RequestParam String descricao,
             @RequestParam(required = false) Double limite) {
 
-        Despesas despesas = new Despesas(
-                dados.gerarIdDinheiroDespesa(),
-                nome,
-                descricao,
-                limite
-        );
-
-        dados.getCategorias().add(dispesas);
+        Categoria categoria = new Categoria(nome, descricao);
+        categorias.add(categoria);
 
         return "redirect:/categorias";
     }
@@ -47,7 +46,7 @@ public class CategoriaController {
 
         model.addAttribute(
                 "categorias",
-                dados.getCategorias()
+                categorias
         );
 
         return "categorias";
@@ -59,7 +58,7 @@ public class CategoriaController {
 
         model.addAttribute(
                 "categorias",
-                dados.getCategorias()
+                categorias
         );
 
         return "despesa-form";
@@ -74,26 +73,9 @@ public class CategoriaController {
             @RequestParam String formaPagamento,
             @RequestParam int categoriaId) {
 
-        Despesas.DadosAplicacao despesas = dados.getCategorias()
-                .stream()
-                .filter(c -> c.getId() == categoriaId)
-                .findFirst()
-                .orElse(null);
-
         if (despesas == null) {
             return "redirect:/despesas/nova";
         }
-
-        DinheiroDespesa dinheiroDespesa = new DinheiroDespesa(
-                dados.gerarIdDinheiroDespesa(),
-                descricao,
-                valor,
-                LocalDate.parse(data),
-                formaPagamento,
-                despesas
-        );
-
-        dados.getDespesas().add(dispesas);
 
         return "redirect:/despesas";
     }
@@ -104,7 +86,7 @@ public class CategoriaController {
 
         model.addAttribute(
                 "despesas",
-                dados.getDespesas()
+                despesas
         );
 
         return "despesas";
